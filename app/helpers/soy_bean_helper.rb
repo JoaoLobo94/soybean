@@ -1,0 +1,2 @@
+module SoyBeanHelper
+end

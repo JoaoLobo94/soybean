@@ -1,0 +1,2 @@
+class SoyBeanController < ApplicationController
+end

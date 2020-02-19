@@ -1,0 +1,2 @@
+class SoyBean < ApplicationRecord
+end
