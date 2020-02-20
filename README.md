@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+create filter method(elastic shearch??)
 
-Things you may want to cover:
+Refractor code
 
-* Ruby version
+splice up import task
 
-* System dependencies
+check the routes
 
-* Configuration
+create basic front end
 
-* Database creation
+show values
 
-* Database initialization
+filter values
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
