@@ -12,7 +12,7 @@ class SoyBeansController < ApplicationController
 
   def csv_cleaner; end
 
-  def import(file)
+  def import(_file)
     key_values_hash = {
       classification: ['diaporthe-stem-canker', 'charcoal-rot', 'rhizoctonia-root-rot',
                        'phytophthora-rot', 'brown-stem-rot', 'powdery-mildew',
@@ -58,7 +58,7 @@ class SoyBeansController < ApplicationController
       roots: ['norm', 'rotted', 'galls-cysts', '?']
     }
 
-   CSV.parse(File.read('/home/joao/Documents/code/tests/adcombi/soybean/storage/soybean-large.data'), headers: false, converters: :numeric) do |soy|
+    CSV.parse(File.read('/home/joao/Documents/code/tests/adcombi/soybean/storage/soybean-large.data'), headers: false, converters: :numeric) do |soy|
       data_dump = {
         classification: soy[0],
         date: soy[1],
@@ -100,15 +100,13 @@ class SoyBeansController < ApplicationController
 
       corrected_data_dump = data_dump.each do |k, v|
         key_values_hash.each do |k1, _v1|
-          if  v.is_a?(Integer)
+          if v.is_a?(Integer)
             data_dump[k] = key_values_hash[k1][v - 1] if k == k1
           end
         end
       end
 
-      p  corrected_data_dump
-
-     # SoyBean.create!(corrected_data_dump)
+      SoyBean.create!(corrected_data_dump)
     end
   end
 
