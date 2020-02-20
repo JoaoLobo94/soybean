@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_163557) do
   enable_extension "plpgsql"
 
   create_table "soy_beans", force: :cascade do |t|
-    t.string "class"
     t.string "classification"
     t.string "date"
     t.string "plant_stand"

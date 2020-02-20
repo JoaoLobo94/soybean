@@ -1,7 +1,6 @@
 class CreateSoyBeans < ActiveRecord::Migration[5.2]
   def change
     create_table :soy_beans do |t|
-      t.string :class
       t.string :classification
       t.string :date
       t.string :plant_stand
@@ -39,6 +38,8 @@ class CreateSoyBeans < ActiveRecord::Migration[5.2]
       t.string :shriveling
       t.string :roots
       t.timestamps
+
+      
     end
   end
 end
