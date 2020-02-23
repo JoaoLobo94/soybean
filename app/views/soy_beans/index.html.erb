@@ -5,9 +5,51 @@
 <table id="myTable">
   <tr class="header">
     <% SoyBean.column_names.each do |header|  %>
-      <th> <%= header %></th>
+      
+      <th> <%= header %> </th>
     <% end  %>
   </tr>
-   <th> <%= SoyBean.last.id %></th>
+  
+    <% @all_soy.each do |header|  %>
+     <tr><td> <%= header.id %></td>
+     <td><%=header.classification %></td> 
+         <td><%=header.date %></td> 
+         <td><%=header.plant_stand %></td> 
+         <td><%=header.precip %></td> 
+         <td><%=header.temp %></td> 
+         <td><%=header.hail %></td> 
+         <td><%=header.crop_hist %></td> 
+         <td><%=header.area_damaged %></td> 
+         <td><%=header.severity %></td> 
+         <td><%=header.seed_tmt %></td> 
+         <td><%=header.germination %></td> 
+         <td><%=header.plant_growth %></td> 
+         <td><%=header.leaves %></td> 
+         <td><%=header.leafspots_halo %></td> 
+         <td><%=header.leafspots_marg %></td> 
+         <td><%=header.leafspot_size %></td> 
+         <td><%=header.leaf_shread %></td> 
+         <td><%=header.leaf_malf %></td> 
+         <td><%=header.leaf_mild %></td> 
+         <td><%=header.stem %></td> 
+         <td><%=header.lodging %></td> 
+         <td><%=header.stem_cankers %></td> 
+         <td><%=header.canker_lesion %></td> 
+         <td><%=header.fruiting_bodies %></td> 
+         <td><%=header.external_decay %></td> 
+         <td><%=header.mycelium %></td> 
+         <td><%=header.int_discolor %></td> 
+         <td><%=header.sclerotia %></td> 
+         <td><%=header.fruit_pods %></td> 
+         <td><%=header.fruit_spots %></td> 
+         <td><%=header.seed %></td> 
+         <td><%=header.mold_growth %></td> 
+         <td><%=header.seed_discolor %></td> 
+         <td><%=header.seed_size %></td> 
+         <td><%=header.shriveling %></td> 
+         <td><%=header.roots %></td> 
+    </tr>
+    <% end  %>
+  
 
 </table> 

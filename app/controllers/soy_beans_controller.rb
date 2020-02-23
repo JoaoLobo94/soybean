@@ -2,7 +2,7 @@
 
 # rubocop:disable Metrics/MethodLength
 require 'csv'
-require 'soy_import'
+
 # defining all the routes method
 class SoyBeansController < ApplicationController
   def index
