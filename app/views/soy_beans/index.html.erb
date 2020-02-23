@@ -1,0 +1,13 @@
+<%= form_tag(soy_beans_path(), {multipart: true}) do%>
+  <%= file_field_tag 'file' %>
+  <%= submit_tag("upload") %>
+<% end %>
+<table id="myTable">
+  <tr class="header">
+    <% SoyBean.column_names.each do |header|  %>
+      <th> <%= header %></th>
+    <% end  %>
+  </tr>
+   <th> <%= SoyBean.last.id %></th>
+
+</table> 

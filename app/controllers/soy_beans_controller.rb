@@ -1,29 +1,21 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
 # rubocop:disable Metrics/MethodLength
 require 'csv'
 require 'soy_import'
 # defining all the routes method
 class SoyBeansController < ApplicationController
   def index
-    soy = PortReducer.apply(params)
-    if ports == []
-      ports = Port.all
-      render json: { status: 'SUCCESS',
-                     message: 'No port query detected, or no ports matching your query were found. Displaying all
-                     ports in the database', data: ports },
-             status: :ok
-    else
-      render json: { status: 'SUCCESS', message: 'Loaded Ports', data: ports }, status: :ok
-    end
+   @all_soy = SoyBean.all
   end
 
+  def show
+    @soy = SoyBean.all
+  end
 
-
- # def create(file)
- # //  SoyImport.parse(file)
-# // end
+  def create
+    SoyImport.parse(params[:file].path)
+  end
 
   private
 
