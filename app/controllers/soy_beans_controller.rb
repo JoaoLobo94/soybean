@@ -6,10 +6,7 @@ require 'csv'
 # defining all the routes method
 class SoyBeansController < ApplicationController
   def index
-    #if empty
    @all_soy = SoyBean.all
-   @soya = SoyBean.new
-    #display lookup
   end
 
   def create
