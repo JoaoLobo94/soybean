@@ -7,15 +7,14 @@
 
 <table id="myTable">
   <tr class="header">
-    <% SoyBean.column_names.each_with_index do |header, index|  %>
+    <%  SoyBean.column_names.drop(1).take(36).each_with_index do |header, index|  %>
       <th> <%= simple_form_for :search, url: soy_beans_path, method: "GET" do |f| %>
-      <%= f.input :"#{header[index]}", required: false, label: header ,:collection =>  @all_soy.collect {|c| c.attributes.select { |key|  header.include?(key) }}.uniq.map {|x| x["#{header}"]}, prompt: "Select your category"%>
-    <% end %>
-    <% end  %>
-    
+      <%= f.input :"#{header[index]}",  required: false, label: header ,:collection =>  @all_soy.collect {|c| c.attributes.select { |key|  header.include?(key) }}.uniq.map {|x| x["#{header}"]}, prompt: "Select your category"%>
+           <% end %>
+    <% end  %> </th> 
+    </tr>
   
-    <% @all_soy.each do |header|  %>
-     <tr><td> <%= header.id %></td>
+   <tr> <% @all_soy.each do |header|  %>
      <td><%=header.classification %></td> 
          <td><%=header.date %></td> 
          <td><%=header.plant_stand %></td> 
