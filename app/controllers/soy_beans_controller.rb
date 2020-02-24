@@ -8,11 +8,13 @@ class SoyBeansController < ApplicationController
   def index
     #if empty
    @all_soy = SoyBean.all
+   @soya = SoyBean.new
     #display lookup
   end
 
   def create
     SoyImport.parse(params[:file].path)
+    redirect_back(fallback_location: soy_beans_path) 
   end
 
   private
