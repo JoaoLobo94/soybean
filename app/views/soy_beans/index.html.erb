@@ -2,13 +2,17 @@
   <%= file_field_tag 'file' %>
   <%= submit_tag("upload") %>
 <% end %>
+
+
 <table id="myTable">
   <tr class="header">
-    <% SoyBean.column_names.each do |header|  %>
-      
-      <th> <%= header %> </th>
+    <% SoyBean.column_names.each_with_index do |header, index|  %>
+      <th> <%= form_tag soy_beans_path, method: 'get' do %>
+             <%= select_tag :header[index] %>
+           <% end %>
+       <%= header %></th>
     <% end  %>
-  </tr>
+    
   
     <% @all_soy.each do |header|  %>
      <tr><td> <%= header.id %></td>

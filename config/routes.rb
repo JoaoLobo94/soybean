@@ -2,4 +2,6 @@
 
 Rails.application.routes.draw do
   resources :soy_beans
+  root controller: :soy_beans, action: :index
+
 end
