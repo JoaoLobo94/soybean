@@ -8,10 +8,9 @@
 <table id="myTable">
   <tr class="header">
     <% SoyBean.column_names.each_with_index do |header, index|  %>
-      <th> <%= simple_form_for :search, url: soy_beans_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-    <%=  f.select :"#{header[index]}", @all_soy.collect {|c| c.attributes.select { |key| header.include?(key) }}.uniq%> 
+      <th> <%= simple_form_for :search, url: soy_beans_path, method: "GET" do |f| %>
+      <%= f.input :"#{header[index]}", required: false, label: header ,:collection =>  @all_soy.collect {|c| c.attributes.select { |key|  header.include?(key) }}.uniq.map {|x| x["#{header}"]}, prompt: "Select your category"%>
     <% end %>
-       <%= header %></th>
     <% end  %>
     
   
