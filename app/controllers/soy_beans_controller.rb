@@ -11,16 +11,20 @@ class SoyBeansController < ApplicationController
       columns = SoyBean.column_names.drop(1).take(36)
       @array_hash = []
       columns.each do |val|
-        @array_hash << {"#{val}": params['search']["#{val}"]}
+        @array_hash << {"#{val}": params['search'][val.to_s]}
       end
       finder = @array_hash.inject(:merge).delete_if { |k, v| v.empty? }
       @all_soy = SoyBean.where(finder)
     end
   end
 
+  def show
+
+  end
+
   def create
     SoyImport.parse(params[:file].path)
-    redirect_back(fallback_location: soy_beans_path) 
+    redirect_back(fallback_location: soy_beans_path)
   end
 
   private

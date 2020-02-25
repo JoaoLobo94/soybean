@@ -5,19 +5,7 @@ class SoyImport
   class << self
     # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/MethodLength
-    
-    def find()
-      columns = SoyBean.column_names.drop(1).take(36)
-      @array_hash = []
-      columns.each_with_index do |val, index|
-        
-        @array_hash << {"#{val}": params[search][:'#{val}']}
-      end
-      @array_hash.inject(:merge)
-    end
-    
-    
-    
+
     def parse(file)
       @key_values_hash = {
         classification: ['diaporthe-stem-canker', 'charcoal-rot', 'rhizoctonia-root-rot',
@@ -102,7 +90,6 @@ class SoyImport
           shriveling: soy[34],
           roots: soy[35]
         }
-
         corrected_data_dump = @data_dump.each do |k, v|
           @key_values_hash.each do |k1, _v1|
             if v.is_a?(Integer)
