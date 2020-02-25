@@ -10,11 +10,11 @@ class SoyBeansController < ApplicationController
     return if params['search'].nil?
 
     columns = SoyBean.column_names.drop(1).take(36)
-    @array_hash = []
+    @array_of_params = []
     columns.each do |val|
-      @array_hash << {"#{val}": params['search'][val.to_s]}
+      @array_of_params << {"#{val}": params['search'][val.to_s]}
     end
-    finder = @array_hash.inject(:merge).delete_if { |k, v| v.empty? }
+    finder = @array_of_params.inject(:merge).delete_if { |k, v| v.empty? }
     @all_soy = SoyBean.where(finder)
   end
 
