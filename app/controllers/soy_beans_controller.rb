@@ -6,7 +6,16 @@ require 'csv'
 # defining all the routes method
 class SoyBeansController < ApplicationController
   def index
-   @all_soy = SoyBean.all
+    @all_soy = SoyBean.all
+    if params['search'].present?
+      columns = SoyBean.column_names.drop(1).take(36)
+      @array_hash = []
+      columns.each do |val|
+        @array_hash << {"#{val}": params['search']["#{val}"]}
+      end
+      finder = @array_hash.inject(:merge).delete_if { |k, v| v.empty? }
+      @all_soy = SoyBean.where(finder)
+    end
   end
 
   def create
