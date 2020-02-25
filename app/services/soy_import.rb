@@ -102,3 +102,5 @@ class SoyImport
     end
   end
 end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength

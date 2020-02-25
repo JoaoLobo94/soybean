@@ -7,19 +7,15 @@ require 'csv'
 class SoyBeansController < ApplicationController
   def index
     @all_soy = SoyBean.all
-    if params['search'].present?
-      columns = SoyBean.column_names.drop(1).take(36)
-      @array_hash = []
-      columns.each do |val|
-        @array_hash << {"#{val}": params['search'][val.to_s]}
-      end
-      finder = @array_hash.inject(:merge).delete_if { |k, v| v.empty? }
-      @all_soy = SoyBean.where(finder)
+    return if params['search'].nil?
+
+    columns = SoyBean.column_names.drop(1).take(36)
+    @array_hash = []
+    columns.each do |val|
+      @array_hash << {"#{val}": params['search'][val.to_s]}
     end
-  end
-
-  def show
-
+    finder = @array_hash.inject(:merge).delete_if { |k, v| v.empty? }
+    @all_soy = SoyBean.where(finder)
   end
 
   def create

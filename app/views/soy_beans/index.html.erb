@@ -2,7 +2,7 @@
   <%= file_field_tag 'file' %>
   <%= submit_tag("upload") %>
 <% end %>
-
+<button><%= link_to 'Reset Filtes', soy_beans_path %></button>
 
 
 <table id="myTable">
@@ -12,10 +12,8 @@
       <td> <%= f.input :"#{header}", required: false, label: header ,:collection => @all_soy.collect {|c| c.attributes.select { |key| header.include?(key) }}.uniq.map {|x| x["#{header}"]} , prompt: "Select your category"%></td>
       <% end  %> 
       <%= f.submit "search"%> 
-      <% end %> 
-      </th> 
-    </tr>
-  
+      <% end %> </th> </tr>
+      
    <tr> <% @all_soy.each do |header|  %>
       <td><%=header.id %></td>
      <td><%=header.classification %></td> 
