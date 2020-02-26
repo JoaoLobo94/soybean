@@ -19,7 +19,12 @@ class SoyBeansController < ApplicationController
   end
 
   def create
-    SoyImport.parse(params[:file].path)
+    @file = SoyImport.parse(params[:file]&.path)
+
+    if @file&.errors&.any? || @file.nil?
+      return redirect_back(fallback_location: soy_beans_path)
+    end
+
     redirect_back(fallback_location: soy_beans_path)
   end
 

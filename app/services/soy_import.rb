@@ -51,7 +51,11 @@ class SoyImport
         shriveling: ['absent', 'present', '?'],
         roots: ['norm', 'rotted', 'galls-cysts', '?']
       }
-      CSV.parse(File.read(file), headers: false, converters: :numeric) do |soy|
+      return if file.nil?
+
+      rescue CSV::MalformedCSVError
+      CSV.parse(File.read(file), headers: false, converters: :numeric, ) do |soy|
+      
         @data_dump = {
           classification: soy[0],
           date: soy[1],
