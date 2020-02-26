@@ -53,9 +53,7 @@ class SoyImport
       }
       return if file.nil?
 
-      rescue CSV::MalformedCSVError
       CSV.parse(File.read(file), headers: false, converters: :numeric, ) do |soy|
-      
         @data_dump = {
           classification: soy[0],
           date: soy[1],
